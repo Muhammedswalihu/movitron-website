@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movitron - Milo | Autonomous Retail Intelligence</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ccff33;
+            --primary-dark: #b3e62a;
+            --secondary: #00C4CC;
+            --dark: #111827;
+            --dark-gray: #374151;
+            --medium-gray: #6B7280;
+            --light-gray: #F3F4F6;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: var(--white);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .cta-button {
+            background: var(--primary);
+            color: var(--dark);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary);
+        }
+
+        .cta-button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 12rem 0 6rem;
+            background: linear-gradient(135deg, #F8FAFF 0%, #F0F7FF 100%);
+            position: relative;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--dark-gray);
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .secondary-button {
+            background: transparent;
+            color: var(--dark);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 2px solid var(--dark);
+            transition: all 0.3s ease;
+        }
+
+        .secondary-button:hover {
+            background: var(--dark);
+            color: var(--white);
+        }
+
+        .launch-badge {
+            margin-top: 3rem;
+            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 12px;
+            display: inline-block;
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--primary);
+        }
+
+        .launch-badge h3 {
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .launch-badge p {
+            color: var(--medium-gray);
+            margin-bottom: 0;
+        }
+
+        /* Sections */
+        .section {
+            padding: 6rem 0;
+        }
+
+        .section-dark {
+            background: var(--dark);
+            color: var(--white);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: var(--medium-gray);
+            text-align: center;
+            margin-bottom: 4rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section-dark .section-subtitle {
+            color: var(--light-gray);
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            color: var(--medium-gray);
+            line-height: 1.6;
+        }
+
+        /* Use Cases Section */
+        .use-cases {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .use-case {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid var(--primary);
+        }
+
+        .use-case h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .use-case p {
+            color: var(--medium-gray);
+            line-height: 1.6;
+        }
+
+        /* RFID Section */
+        .rfid-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--dark);
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .rfid-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .rfid-section p {
+            font-size: 1.25rem;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .rfid-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .rfid-feature {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .rfid-feature h3 {
+            margin-bottom: 1rem;
+        }
+
+        .rfid-feature p {
+            color: var(--dark-gray);
+            margin-bottom: 0;
+        }
+
+        /* How It Works */
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            counter-reset: step;
+            margin-top: 3rem;
+        }
+
+        .step {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            position: relative;
+            counter-increment: step;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .step::before {
+            content: counter(step);
+            background: var(--primary);
+            color: var(--dark);
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: -1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-weight: bold;
+        }
+
+        .step h3 {
+            margin-bottom: 1rem;
+            margin-top: 1rem;
+        }
+
+        .step p {
+            color: var(--medium-gray);
+        }
+
+        /* Waitlist Section */
+        .waitlist-section {
+            background: linear-gradient(135deg, var(--dark) 0%, #1E3A8A 100%);
+            color: var(--white);
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .waitlist-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .waitlist-section p {
+            font-size: 1.25rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .waitlist-form {
+            max-width: 500px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2.5rem;
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            font-family: 'Inter', sans-serif;
+        }
+
+        .form-group input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .form-group select option {
+            color: var(--dark);
+        }
+
+        .form-submit {
+            width: 100%;
+            background: var(--primary);
+            color: var(--dark);
+            border: none;
+            padding: 1rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .form-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Benefits */
+        .benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .benefit {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .benefit-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .benefit h3 {
+            margin-bottom: 1rem;
+        }
+
+        .benefit p {
+            color: var(--medium-gray);
+        }
+
+        .section-dark .benefit p {
+            color: var(--light-gray);
+        }
+
+        /* FAQ */
+        .faq {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--light-gray);
+            padding-bottom: 1.5rem;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            font-size: 1.125rem;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            color: var(--medium-gray);
+            line-height: 1.6;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-answer.active {
+            max-height: 500px;
+        }
+
+        .faq-toggle {
+            font-size: 1.25rem;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-toggle.active {
+            transform: rotate(45deg);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: var(--white);
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .footer-description {
+            color: var(--light-gray);
+            line-height: 1.6;
+            max-width: 400px;
+        }
+
+        .footer-links h4 {
+            color: var(--white);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .footer-links a {
+            display: block;
+            color: var(--light-gray);
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--dark-gray);
+            padding-top: 2rem;
+            text-align: center;
+            color: var(--medium-gray);
+            font-size: 0.9rem;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            margin: 2rem;
+        }
+
+        .modal h2 {
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .modal h3 {
+            margin: 1.5rem 0 0.5rem;
+            color: var(--dark);
+        }
+
+        .modal p, .modal li {
+            color: var(--dark-gray);
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .modal-close {
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background: var(--primary);
+            color: var(--dark);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero {
+                padding: 8rem 0 4rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .modal-content {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">Movitron</a>
+                <div class="nav-links">
+                    <a href="#technology">Technology</a>
+                    <a href="#solutions">Solutions</a>
+                    <a href="#use-cases">Use Cases</a>
+                    <a href="#rfid">RFID</a>
+                    <a href="#waitlist">Waitlist</a>
+                </div>
+                <a href="#waitlist" class="cta-button">Join Waitlist</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="fade-in">Milo is the first autonomous shelf auditor with <span style="color: var(--primary);">common sense</span></h1>
+            <p class="fade-in">Milo is building hybrid AI that understands your store, not just scans it. The future of retail intelligence is coming soon.</p>
+            <div class="hero-buttons fade-in">
+                <a href="#waitlist" class="cta-button">Join the Waitlist</a>
+                <a href="#technology" class="secondary-button">Learn More</a>
+            </div>
+            
+            <div class="launch-badge fade-in">
+                <h3>Launching Soon</h3>
+                <p>Be among the first to experience Milo's revolutionary retail intelligence</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">Lost Sales, Wasted Time, and Invisible Errors</h2>
+            <p class="section-subtitle fade-in">Traditional audits and basic robots can't see the whole picture.</p>
+            
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <span class="feature-icon">❓</span>
+                    <h3>"Is it out-of-stock or just misplaced?"</h3>
+                    <p>Spend hours verifying false alarms from basic scanning systems that lack contextual understanding.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <span class="feature-icon">💰</span>
+                    <h3>"Why did we miss that pricing error?"</h3>
+                    <p>Lose customer trust and face compliance fines from undetected label issues that slip through manual checks.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <span class="feature-icon">⏱️</span>
+                    <h3>"Our staff are auditors, not salespeople"</h3>
+                    <p>Valuable time is spent on tedious audit tasks instead of helping customers and driving sales.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section id="technology" class="section section-dark">
+        <div class="container">
+            <h2 class="section-title fade-in">Intelligence, Automated. Finally with Context.</h2>
+            <p class="section-subtitle fade-in">Milo uses a groundbreaking <strong>Hybrid AI Architecture</strong> that reasons like a human store manager.</p>
+            
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <span class="feature-icon">📏</span>
+                    <h3>Size-Aware Reasoning</h3>
+                    <p>Knows a cereal box isn't a chocolate bar. Cross-references objects with product sizes to eliminate false positives and misidentifications.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <span class="feature-icon">🗺️</span>
+                    <h3>Spatial Context Intelligence</h3>
+                    <p>Understands that motor oil doesn't belong in the baby aisle. Flags misplaced items using spatial reasoning and typical store layouts.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <span class="feature-icon">💡</span>
+                    <h3>Explainable, Actionable Insights</h3>
+                    <p>Get clear reasoning for every alert: "Product flagged: Wrong size for category." Your team can act with confidence and understanding.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases Section -->
+    <section id="use-cases" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">Proven Retail Solutions</h2>
+            <p class="section-subtitle fade-in">Milo delivers measurable improvements across all key retail metrics.</p>
+            
+            <div class="use-cases">
+                <div class="use-case fade-in">
+                    <h3>📈 Dramatic Improvement in Shelf Availability</h3>
+                    <p>Increase on-shelf availability with Milo's precise detection and real-time alerts for out-of-stock situations.</p>
+                </div>
+                <div class="use-case fade-in">
+                    <h3>🏷️ Price & Promotion Accuracy</h3>
+                    <p>Ensure price tags match products and promotional signage with automated verification and discrepancy alerts.</p>
+                </div>
+                <div class="use-case fade-in">
+                    <h3>📊 Enhanced Compliance & Merchandising</h3>
+                    <p>Maintain perfect planogram adherence and merchandising standards with continuous monitoring and reporting.</p>
+                </div>
+                <div class="use-case fade-in">
+                    <h3>🌐 Virtual Store Tours</h3>
+                    <p>Walk your stores from anywhere with remote supervision capabilities and real-time store visibility.</p>
+                </div>
+                <div class="use-case fade-in">
+                    <h3>📦 Vendor & Brand Insights</h3>
+                    <p>Give brands real-time visibility into how their SKUs are performing and whether promotions are properly executed.</p>
+                </div>
+                <div class="use-case fade-in">
+                    <h3>🤖 Hands-Off Operation</h3>
+                    <p>Stores don't need to manage or program much - Milo self-navigates and integrates with existing systems seamlessly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RFID Section -->
+    <section id="rfid" class="rfid-section">
+        <div class="container">
+            <h2 class="fade-in">Advanced RFID Integration</h2>
+            <p class="fade-in">Milo offers optional RFID capabilities for even greater accuracy and inventory visibility, similar to industry leaders.</p>
+            
+            <div class="rfid-features">
+                <div class="rfid-feature fade-in">
+                    <h3>📡 RFID Scanning</h3>
+                    <p>Enhanced inventory tracking with RFID technology for high-value items and complex product categories.</p>
+                </div>
+                <div class="rfid-feature fade-in">
+                    <h3>🔍 Hybrid Detection</h3>
+                    <p>Combines computer vision with RFID for the most accurate inventory tracking available.</p>
+                </div>
+                <div class="rfid-feature fade-in">
+                    <h3>📊 Real-time Analytics</h3>
+                    <p>Get instant insights into inventory movement, shrinkage, and product performance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">From Scan to Smart Task in Minutes</h2>
+            <p class="section-subtitle fade-in">A seamless process that transforms retail operations with intelligent automation.</p>
+            
+            <div class="steps">
+                <div class="step fade-in">
+                    <h3>Scan</h3>
+                    <p>The autonomous robot navigates your aisles, capturing high-resolution images and 3D depth data of every shelf.</p>
+                </div>
+                <div class="step fade-in">
+                    <h3>Reason</h3>
+                    <p>Our hybrid AI brain processes the scene, using size and spatial reasoning to validate every detection with human-like understanding.</p>
+                </div>
+                <div class="step fade-in">
+                    <h3>Act</h3>
+                    <p>Your staff receives a prioritized, accurate task list: "Restock A7," "Fix price on B2," "Investigate misplaced item in aisle 3."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Waitlist Section -->
+    <section id="waitlist" class="waitlist-section">
+        <div class="container">
+            <h2 class="fade-in">Join the Pioneer Program</h2>
+            <p class="fade-in">Be among the first to deploy Milo. We're selecting a limited number of forward-thinking retail partners for our initial launch.</p>
+            
+            <div class="benefits">
+                <div class="benefit fade-in">
+                    <span class="benefit-icon">🚀</span>
+                    <h3>Priority Access</h3>
+                    <p>Be first in line to deploy Milo in your stores at launch.</p>
+                </div>
+                <div class="benefit fade-in">
+                    <span class="benefit-icon">🤝</span>
+                    <h3>Founder-level Support</h3>
+                    <p>Direct access to our team for personalized onboarding and support.</p>
+                </div>
+                <div class="benefit fade-in">
+                    <span class="benefit-icon">💎</span>
+                    <h3>Exclusive Pricing</h3>
+                    <p>Lock in special pioneer program pricing with favorable terms.</p>
+                </div>
+            </div>
+            
+            <div class="waitlist-form fade-in">
+                <h3>Secure Your Spot on the Waitlist</h3>
+                <p style="margin-bottom: 1.5rem; opacity: 0.9;">Get notified first at launch and be eligible for the Pioneer Program.</p>
+                
+                <form id="waitlistForm">
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" id="firstName" name="firstName" required placeholder="Enter your first name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Work Email</label>
+                        <input type="email" id="email" name="email" required placeholder="Enter your work email">
+                    </div>
+                    <div class="form-group">
+                        <label for="company">Company Name</label>
+                        <input type="text" id="company" name="company" required placeholder="Enter your company name">
+                    </div>
+                    <div class="form-group">
+                        <label for="storeType">Store Type</label>
+                        <select id="storeType" name="storeType" required>
+                            <option value="">Select store type</option>
+                            <option value="grocery">Grocery</option>
+                            <option value="convenience">Convenience Store</option>
+                            <option value="specialty">Specialty Retail</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="storeCount">Number of Stores</label>
+                        <select id="storeCount" name="storeCount" required>
+                            <option value="">Select number of stores</option>
+                            <option value="1-5">1-5</option>
+                            <option value="6-20">6-20</option>
+                            <option value="21-100">21-100</option>
+                            <option value="100+">100+</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="form-submit">Join the Waitlist</button>
+                </form>
+                <p style="margin-top: 1rem; font-size: 0.875rem; opacity: 0.8;">Your information is 100% secure. We will never spam you.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">Frequently Asked Questions</h2>
+            
+            <div class="faq">
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        When will Milo be available?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        We are preparing for market release soon. Joining the waitlist gives you priority access and early notification as we approach our launch date.
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        How is this different from other inventory robots?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Other solutions use basic computer vision that simply matches patterns. Milo uses a hybrid AI brain with commonsense reasoning for size and spatial context, making it dramatically more accurate and reliable in real-world retail environments.
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        Can I see a demo before launch?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        We'll begin live demos for waitlist members as we approach our launch date. Priority will be given to Pioneer Program applicants who complete the waitlist form.
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        Does Milo support RFID technology?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Yes! Milo offers optional RFID integration for enhanced inventory tracking, similar to industry leaders. This provides even greater accuracy for high-value items and complex product categories.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <div class="footer-logo">Movitron</div>
+                    <p class="footer-description">Building the future of retail intelligence with Milo - AI that understands, not just sees. Launching soon.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Product</h4>
+                    <a href="#technology">Technology</a>
+                    <a href="#solutions">Solutions</a>
+                    <a href="#use-cases">Use Cases</a>
+                    <a href="#rfid">RFID</a>
+                    <a href="#waitlist">Waitlist</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <a href="mailto:hello@movitron.com">Contact</a>
+                    <a href="#" onclick="openModal('privacyModal'); return false;">Privacy Policy</a>
+                    <a href="#" onclick="openModal('termsModal'); return false;">Terms of Service</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Movitron. All rights reserved. Retail intelligence with common sense.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Privacy Policy Modal -->
+    <div id="privacyModal" class="modal">
+        <div class="modal-content">
+            <h2>Privacy Policy</h2>
+            <p><strong>Last updated:</strong> January 2024</p>
+            
+            <h3>Information We Collect</h3>
+            <p>We collect information you provide directly to us, such as when you join our waitlist, including:</p>
+            <ul>
+                <li>Name and contact information</li>
+                <li>Company details</li>
+                <li>Store information and type</li>
+                <li>Communication preferences</li>
+            </ul>
+            
+            <h3>How We Use Your Information</h3>
+            <p>We use the information we collect to:</p>
+            <ul>
+                <li>Communicate with you about Milo updates and launch information</li>
+                <li>Notify you about product availability and demo opportunities</li>
+                <li>Provide customer support and respond to inquiries</li>
+                <li>Improve our products and services</li>
+            </ul>
+            
+            <h3>Information Sharing</h3>
+            <p>We do not sell, trade, or otherwise transfer your personal information to third parties without your consent, except as required by law.</p>
+            
+            <h3>Data Security</h3>
+            <p>We implement appropriate security measures to protect your personal information against unauthorized access, alteration, or destruction.</p>
+            
+            <button class="modal-close" onclick="closeModal('privacyModal')">Close</button>
+        </div>
+    </div>
+
+    <!-- Terms of Service Modal -->
+    <div id="termsModal" class="modal">
+        <div class="modal-content">
+            <h2>Terms of Service</h2>
+            <p><strong>Last updated:</strong> January 2024</p>
+            
+            <h3>Waitlist Agreement</h3>
+            <p>By joining our waitlist, you agree to receive communications about Milo product updates, launch information, and related news from Movitron.</p>
+            
+            <h3>Intellectual Property</h3>
+            <p>All content on this website, including Milo technology descriptions, product names, logos, and designs, is the property of Movitron and protected by intellectual property laws.</p>
+            
+            <h3>Limitation of Liability</h3>
+            <p>Movitron provides this website and its content on an "as is" basis. We make no warranties regarding the accuracy or completeness of any information contained herein.</p>
+            
+            <h3>Waitlist Terms</h3>
+            <p>Joining the waitlist does not guarantee product availability or specific pricing. Priority access will be granted based on our selection criteria and availability.</p>
+            
+            <h3>Changes to Terms</h3>
+            <p>We reserve the right to modify these terms at any time. Continued use of the website after changes constitutes acceptance of the modified terms.</p>
+            
+            <button class="modal-close" onclick="closeModal('termsModal')">Close</button>
+        </div>
+    </div>
+
+    <script>
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const toggle = question.querySelector('.faq-toggle');
+                
+                answer.classList.toggle('active');
+                toggle.classList.toggle('active');
+            });
+        });
+        
+        // Form Submission
+        document.getElementById('waitlistForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = {
+                firstName: document.getElementById('firstName').value,
+                email: document.getElementById('email').value,
+                company: document.getElementById('company').value,
+                storeType: document.getElementById('storeType').value,
+                storeCount: document.getElementById('storeCount').value,
+                timestamp: new Date().toISOString()
+            };
+            
+            // Show success message
+            alert('Thank you ' + formData.firstName + '! We\'ve added you to the waitlist. We\'ll contact you at ' + formData.email + ' soon.');
+            
+            // Send notification (using simple mailto method)
+            sendWaitlistNotification(formData);
+            
+            // Reset form
+            this.reset();
+        });
+        
+        // Send email notification
+        function sendWaitlistNotification(formData) {
+            const subject = 'New Milo Waitlist Signup - ' + formData.company;
+            const body = `
+New waitlist signup from Movitron website:
+
+Name: ${formData.firstName}
+Email: ${formData.email}
+Company: ${formData.company}
+Store Type: ${formData.storeType}
+Number of Stores: ${formData.storeCount}
+Timestamp: ${formData.timestamp}
+
+Please follow up with this potential customer!
+            `.trim();
+            
+            // Open email client with pre-filled data
+            window.location.href = `mailto:hello@movitron.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        }
+        
+        // Modal functions
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+        }
+        
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = 'auto'; // Re-enable scrolling
+        }
+        
+        // Close modal when clicking outside content
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeModal(this.id);
+                }
+            });
+        });
+        
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Fade-in Animation on Scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Header background on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+    </script>
+</body>
+</html>
