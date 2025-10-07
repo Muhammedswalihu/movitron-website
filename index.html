@@ -1097,7 +1097,7 @@
                 <h3>Secure Your Spot on the Waitlist</h3>
                 <p style="margin-bottom: 1.5rem; opacity: 0.9;">Get notified first at launch and be eligible for the Pioneer Program.</p>
                 
-                <form id="waitlistForm">
+                 <form id="waitlistForm" action="https://formspree.io/f/movkndkn" method="POST">
                     <div class="form-group">
                         <label for="firstName">First Name</label>
                         <input type="text" id="firstName" name="firstName" required placeholder="Enter your first name">
@@ -1261,53 +1261,9 @@
     </div>
 
     <script>
-        // Waitlist form submission
-     // Waitlist form submission
-document.getElementById('waitlistForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    // Get form data
-    const formData = {
-        firstName: document.getElementById('firstName').value,
-        email: document.getElementById('email').value,
-        company: document.getElementById('company').value,
-        storeType: document.getElementById('storeType').value,
-        storeCount: document.getElementById('storeCount').value,
-        timestamp: new Date().toISOString()
-    };
-    
-    // Show success message
-    alert('Thank you ' + formData.firstName + '! We\'ve added you to the waitlist. We\'ll contact you at ' + formData.email + ' soon.');
-    
-    // Send email notification
-    sendWaitlistNotification(formData);
-    
-    // Reset form
-    this.reset();
-});
+      
 
-// Send email notification
-function sendWaitlistNotification(formData) {
-    const subject = 'New Milo Waitlist Signup - ' + formData.company;
-    const body = `
-New waitlist signup from Movitron website:
 
-Name: ${formData.firstName}
-Email: ${formData.email}
-Company: ${formData.company}
-Store Type: ${formData.storeType}
-Number of Stores: ${formData.storeCount}
-Timestamp: ${formData.timestamp}
-
-Please follow up with this potential customer!
-    `.trim();
-    
-    // ⚠️ CHANGE THIS TO YOUR ACTUAL EMAIL:
-    const yourEmail = 'contact@movitronai.com';
-    
-    // Open email client with pre-filled data
-    window.location.href = `mailto:${yourEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-}
         
         // FAQ toggle functionality
         document.querySelectorAll('.faq-question').forEach(question => {
